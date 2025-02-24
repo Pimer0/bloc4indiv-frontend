@@ -6,6 +6,7 @@ export interface salarieProps {
     email: string;
     idService?: number;
     idSite?: number;
+    id: number;
     ville: string;
     service: string;
     children?: React.ReactNode;

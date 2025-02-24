@@ -1,5 +1,6 @@
 import React from "react";
 import { salarieProps } from "@/Interfaces/SalarieProps";
+import BouttonGet from "@/Composants/BouttonGet";
 
 const Salarie: React.FC<salarieProps> = ({
                                              nom,
@@ -9,6 +10,7 @@ const Salarie: React.FC<salarieProps> = ({
                                              email,
                                              idService,
                                              idSite,
+                                             id,
                                              ville,
                                              service,
                                              children,
@@ -24,6 +26,9 @@ const Salarie: React.FC<salarieProps> = ({
                     <p>Téléphone Fixe: {telFix}</p>
                     <p>Téléphone Portable: {telPortable}</p>
                 </div>
+            </div>
+            <div>
+                <BouttonGet entityId={id}></BouttonGet>
             </div>
             {children && <div>{children}</div>} {/* Affiche les enfants s'ils existent */}
         </div>

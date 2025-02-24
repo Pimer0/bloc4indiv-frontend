@@ -128,6 +128,7 @@ export default function Home() {
                     idSite={salarie.idSite}
                     ville={salarie.ville}
                     service={salarie.service}
+                    id={salarie.id}
                 />
             ))}
           </div>
