@@ -6,23 +6,21 @@ const Salarie: React.FC<salarieProps> = ({
                                              prenom,
                                              telFix,
                                              telPortable,
-                                             Email,
-                                             IdService,
-                                             IdSite,
+                                             email,
+                                             idService,
+                                             idSite,
+                                             ville,
+                                             service,
                                              children,
                                          }) => {
     return (
-        <div>
+        <div className={"bg-white rounded-lg p-4 mb-4"}>
             <div className={"flex-row flex gap-3"}>
-                <div className={"bg-white rounded-lg"}>
-
-                    {/* <Image width={239} height={239} src={img} alt={"Vin"} /> */}
-                </div>
-                <div>
+                <div >
                     <p className={"font-bold"}>{`${nom} ${prenom}`}</p>
-                    <p>Service ID: {IdService}</p>
-                    <p>Site ID: {IdSite}</p>
-                    <p>Email: {Email}</p>
+                    <p>Service: {service}</p>
+                    <p>Site: {ville}</p>
+                    <p>Email: {email}</p>
                     <p>Téléphone Fixe: {telFix}</p>
                     <p>Téléphone Portable: {telPortable}</p>
                 </div>

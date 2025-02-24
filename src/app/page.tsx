@@ -46,6 +46,7 @@ export default function Home() {
         const data = await response.json();
         if (data.success) {
           setServices(data.data);
+          console.log("Services:", data.data); // Log des services
         }
       } catch (error) {
         console.error("Erreur lors de la récupération des services:", error);
@@ -60,8 +61,13 @@ export default function Home() {
   const filteredSalaries = salaries.filter(salarie => {
     const matchesSearch = salarie.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
         salarie.prenom.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesSite = selectedSite ? salarie.IdSite === parseInt(selectedSite) : true;
-    const matchesService = selectedService ? salarie.IdService === parseInt(selectedService) : true;
+
+    // Convertir selectedSite en nombre pour la comparaison
+    const siteId = Number(selectedSite);
+    const matchesSite = selectedSite ? salarie.idSite === siteId : true;
+
+
+    const matchesService = selectedService ? salarie.idService === Number(selectedService) : true;
 
     return matchesSearch && matchesSite && matchesService;
   });
@@ -80,7 +86,7 @@ export default function Home() {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <Bouton text={'Rechercher'}></Bouton>
+
               </div>
               <label htmlFor="site-select">Triez par site:</label>
               <select
@@ -91,7 +97,7 @@ export default function Home() {
               >
                 <option value="">--Tous--</option>
                 {sites.map(site => (
-                    <option key={site.idSite} value={site.idSite}>{site.ville}</option>
+                    <option key={site.idSite} value={site.idSite.toString()}>{site.ville}</option>
                 ))}
               </select>
 
@@ -104,7 +110,7 @@ export default function Home() {
               >
                 <option value="">--Tous--</option>
                 {services.map(service => (
-                    <option key={service.idService} value={service.idService}>{service.nomService}</option>
+                    <option key={service.idService} value={service.idService.toString()}>{service.nomService}</option>
                 ))}
               </select>
             </form>
@@ -117,10 +123,11 @@ export default function Home() {
                     prenom={salarie.prenom}
                     telFix={salarie.telFix}
                     telPortable={salarie.telPortable}
-                    Email={salarie.Email}
-                    IdService={salarie.IdService}
-                    IdSite={salarie.IdSite}
-                    /*children={undefined}*/
+                    email={salarie.email}
+                    idService={salarie.idService}
+                    idSite={salarie.idSite}
+                    ville={salarie.ville}
+                    service={salarie.service}
                 />
             ))}
           </div>
