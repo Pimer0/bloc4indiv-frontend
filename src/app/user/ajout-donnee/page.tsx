@@ -38,7 +38,7 @@ export default function AjoutDonnees() {
             try {
                 const response = await fetch('http://localhost:5046/api/Service');
                 if (!response.ok) {
-                    throw new Error(`Erreur HTTP: ${response.status}`);
+                    console.error(`Erreur HTTP: ${response.status}`);
                 }
                 const data = await response.json();
                 if (data.success) {
@@ -53,7 +53,7 @@ export default function AjoutDonnees() {
             try {
                 const response = await fetch('http://localhost:5046/api/Site');
                 if (!response.ok) {
-                    throw new Error(`Erreur HTTP: ${response.status}`);
+                    console.error(`Erreur HTTP: ${response.status}`);
                 }
                 const data = await response.json();
                 if (data.success) {
@@ -119,7 +119,7 @@ export default function AjoutDonnees() {
             }
 
             try {
-                // Utilisez fetchWithSessionUser pour les requêtes POST
+                // fetchWithSessionUser pour les requêtes POST
                 const response = await fetchWithSessionUser(url, {
                     method: 'POST',
                     headers: {

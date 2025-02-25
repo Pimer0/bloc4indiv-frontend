@@ -28,6 +28,10 @@ export const fetchWithSessionUser = async (url: string, options: RequestInit = {
         throw new Error(errorMessage);
     }
 
+    if (response.status === 204) {
+        return null;
+    }
+
     // Retourne les données JSON directement
     return response.json();
 };

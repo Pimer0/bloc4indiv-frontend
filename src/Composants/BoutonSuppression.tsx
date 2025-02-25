@@ -1,33 +1,41 @@
 import React from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import { BoutonSuppressionProps } from "@/Interfaces/BoutonSuppressionProps";
+import {fetchWithSessionUser} from "@/lib/fetchWithSession";
+
+
 
 const BoutonSuppression = ({ entityId, entityType, onDelete }: BoutonSuppressionProps) => {
+
+
     const handleSuppression = async () => {
         try {
             let endpoint;
 
-            // Déterminer l'endpoint en fonction du type d'entité
-            switch(entityType) {
+            switch (entityType) {
                 case "site":
-                    endpoint = `http://localhost:5046/api/Site/${entityId}`;
+                    endpoint = `/api/Site/${entityId}`;
                     break;
                 case "service":
-                    endpoint = `http://localhost:5046/api/Service/${entityId}`;
+                    endpoint = `/api/Service/${entityId}`;
                     break;
                 case "salarie":
-                    endpoint = `http://localhost:5046/api/Salarie/${entityId}`;
+                    endpoint = `/api/Salarie/${entityId}`;
                     break;
                 default:
                     console.error("Type d'entité non reconnu");
                     return;
             }
 
-            const reponse = await fetch(endpoint, {
+            const response = await fetchWithSessionUser(endpoint, {
                 method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
             });
 
-            if (reponse.ok) {
+            // Si la réponse est vide (statut 204), considérer que la suppression a réussi
+            if (response === null || response.ok) {
                 console.log(`${entityType} supprimé avec succès`);
                 onDelete(entityId); // Mettre à jour l'état après suppression
             } else {

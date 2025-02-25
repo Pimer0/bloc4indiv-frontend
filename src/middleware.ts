@@ -6,24 +6,22 @@ import { SessionPayload } from '@/Interfaces/SessionPayload';
 export async function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
 
-    // Exclure la route /user/login et /user/code
-    if (pathname === '/user/login' || '/user/code') {
+    // Exclure les routes /user/login et /user/code
+    if (pathname === '/user/login' || pathname === '/user/code') {
         return NextResponse.next();
     }
-
 
     const sessionUser = request.cookies.get('sessionUser')?.value;
 
     let payload: SessionPayload | null = null;
-    let isAdmin = false;
-if (sessionUser) {
+    if (sessionUser) {
         payload = await decrypt(sessionUser) as SessionPayload;
-        isAdmin = true;
     }
 
+    // Si l'utilisateur n'est pas connecté ou si la session est expirée
     if (!payload || new Date(payload.exp * 1000) < new Date()) {
-        // Rediriger vers la page de connexion si l'utilisateur n'est pas authentifié
-        return NextResponse.redirect(new URL(isAdmin ? '/user/code' : '/', request.url));
+        // Rediriger vers la page de connexion
+        return NextResponse.redirect(new URL('/user/code', request.url));
     }
 
     // Ajouter les informations de l'utilisateur à la requête
