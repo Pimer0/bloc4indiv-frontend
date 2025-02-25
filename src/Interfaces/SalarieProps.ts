@@ -1,7 +1,7 @@
 export interface salarieProps {
     nom: string;
     prenom: string;
-    telFix: string;
+    telFixe: string;
     telPortable: string;
     email: string;
     idService?: number;

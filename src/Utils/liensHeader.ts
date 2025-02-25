@@ -8,11 +8,11 @@ export const liensHeaderUser = [
         text: 'Gestion salarié'
     },
     {
-        pathname: 'user/gestion-site',
+        pathname: '/user/gestion-site',
         text: 'Gestion site'
     },
     {
-        pathname: 'user/gestion-service',
+        pathname: '/user/gestion-service',
         text: 'Gestion service'
     }
 ];

@@ -7,11 +7,15 @@ export interface ResponseData {
 }
 
 export interface ResponseDataUser {
-    data?: {
-        id?: string;
-        roleId?: string;
+    data: {
+        idUtilisateur: number;
+        mail: string;
+        idRole: number;
     };
-    tokenJWT?: string;
+    success: boolean;
+    message: string;
+    tokenJWT: string;
+    statusCode: number;
 }
 
 export interface sessionUser {

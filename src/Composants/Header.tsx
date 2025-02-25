@@ -5,7 +5,7 @@ import {RequestCookie} from "next/dist/compiled/@edge-runtime/cookies";
 
 const Header: React.FC<{ existingSession: RequestCookie | null, style?: string }> = ({ existingSession, style = 'flex row text-[#1E4147] active:underline active:underline-offset-4 focus:underline focus:underline-offset-4 hover:underline hover:underline-offset-4' }) => {
     return (
-        <header className={'flex items-center justify-between p-4'}>
+        <header className={'flex items-center justify-between p-4 sticky'}>
 
             <div className={'flex justify-center gap-5'}>
                 {!existingSession &&<Link className={style} href={'/user/code'}>

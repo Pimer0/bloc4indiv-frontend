@@ -119,7 +119,7 @@ export default function Home() {
                     key={index}
                     nom={salarie.nom}
                     prenom={salarie.prenom}
-                    telFix={salarie.telFix}
+                    telFixe={salarie.telFixe}
                     telPortable={salarie.telPortable}
                     email={salarie.email}
                     idService={salarie.idService}
