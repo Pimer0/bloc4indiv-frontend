@@ -9,7 +9,7 @@ const SessionHeader = async () => {
     if (existingSessionUser) {
         return <HeaderUser existingSessionUser={existingSessionUser} />;
 
-    } else {
+    } else if (!existingSessionUser) {
         return <Header existingSession={null} />;
     }
 };

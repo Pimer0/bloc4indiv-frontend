@@ -56,7 +56,8 @@ export async function decrypt(session: string | undefined = '') {
 export async function createSessionUser(response: ResponseDataUser) {
     console.log('Raw response:', JSON.stringify(response, null, 2));
 
-    const Id = response?.data?.id;
+    // Correction ici : utilisez `idUtilisateur` au lieu de `id`
+    const Id = response?.data?.idUtilisateur;
     const token = response?.tokenJWT;
 
     console.log('Extracted data:', { Id, token });
@@ -67,8 +68,7 @@ export async function createSessionUser(response: ResponseDataUser) {
 
     const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
 
-    const cookieStore = await cookies();
-
+    const cookieStore =  await cookies();
 
     cookieStore.set('sessionUser', token, {
         httpOnly: true,
