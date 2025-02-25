@@ -5,11 +5,11 @@ import BouttonGet from "@/Composants/BouttonGet";
 const Salarie: React.FC<salarieProps> = ({
                                              nom,
                                              prenom,
-                                             telFix,
+    /*                                         telFix,
                                              telPortable,
                                              email,
                                              idService,
-                                             idSite,
+                                             idSite,*/
                                              id,
                                              ville,
                                              service,
@@ -22,9 +22,9 @@ const Salarie: React.FC<salarieProps> = ({
                     <p className={"font-bold"}>{`${nom} ${prenom}`}</p>
                     <p>Service: {service}</p>
                     <p>Site: {ville}</p>
-                    <p>Email: {email}</p>
+{/*                    <p>Email: {email}</p>
                     <p>Téléphone Fixe: {telFix}</p>
-                    <p>Téléphone Portable: {telPortable}</p>
+                    <p>Téléphone Portable: {telPortable}</p>*/}
                 </div>
             </div>
             <div>
