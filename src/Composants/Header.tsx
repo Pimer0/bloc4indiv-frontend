@@ -8,6 +8,7 @@ const Header: React.FC<{ existingSession: RequestCookie | null, style?: string }
         <header className={'flex items-center justify-between p-4 sticky'}>
 
             <div className={'flex justify-center gap-5'}>
+                <Link href={'/'}>Accueil</Link>
                 {!existingSession &&<Link className={style} href={'/user/code'}>
                     <FaRegUser color={'#1E4147'} style={{ marginRight: '0.5rem' }} />
                     Connexion

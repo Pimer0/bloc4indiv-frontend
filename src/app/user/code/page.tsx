@@ -1,7 +1,8 @@
-'use client'
+'use client';
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import InfoBulle from "@/Composants/infoBulle";
+import Cookies from 'js-cookie'; // Importer js-cookie
 
 export default function Code() {
     const router = useRouter();
@@ -10,6 +11,15 @@ export default function Code() {
 
     const validateCode = (code: string) => {
         if (code === "ilovenegosud") {
+            // Définir un cookie `CookieCode` valide pendant 7 jours
+            Cookies.set('CookieCode', 'true', {
+                expires: 7, // Expire dans 7 jours
+                secure: true, // Uniquement en HTTPS
+                sameSite: 'lax', // Politique SameSite
+                path: '/', // Accessible sur tout le site
+            });
+
+            // Rediriger vers /user/login
             router.push("/user/login");
         } else {
             setError("Mauvais code, réessayez");
@@ -31,7 +41,6 @@ export default function Code() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)} // Mettre à jour l'état sans valider
                     onKeyDown={(e) => {
-
                         if (e.key === "Enter") {
                             e.preventDefault();
                             validateCode(input); // Valider uniquement lors de l'appui sur "Entrée"
