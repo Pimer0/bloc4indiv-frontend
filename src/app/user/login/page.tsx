@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { FormStateLogin, SignupFormSchema } from "@/lib/zodDefinitions";
 import { loginUtilisateur } from "@/services/api/UserAuth";
+import Cookies from "js-cookie";
 
 export default function Login() {
     const router = useRouter();
@@ -53,7 +54,8 @@ export default function Login() {
             });
 
 
-            // Rediriger l'utilisateur après une connexion réussie
+            // Rediriger l'utilisateur après une connexion réussie et suppr le cookie
+            Cookies.remove('CookieCode');
             router.back();
         } catch (error) {
             setErrors({

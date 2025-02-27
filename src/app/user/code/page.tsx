@@ -13,10 +13,10 @@ export default function Code() {
         if (code === "ilovenegosud") {
             // Définir un cookie `CookieCode` valide pendant 7 jours
             Cookies.set('CookieCode', 'true', {
-                expires: 7, // Expire dans 7 jours
-                secure: true, // Uniquement en HTTPS
-                sameSite: 'lax', // Politique SameSite
-                path: '/', // Accessible sur tout le site
+                expires: 7,
+                secure: true,
+                sameSite: 'lax',
+                path: '/',
             });
 
             // Rediriger vers /user/login
