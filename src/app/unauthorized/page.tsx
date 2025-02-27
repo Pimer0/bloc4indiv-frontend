@@ -10,7 +10,7 @@ export default function UnauthorizedPage() {
             <div className="bg-white p-8 rounded-lgmax-w-md w-[700px]">
                 <h1 className="text-2xl font-bold text-red-600 mb-4">Accès non autorisé</h1>
                 <p className="text-gray-700 mb-6">
-                    Votre session a expiré ou vous n'avez pas les autorisations nécessaires pour accéder à cette page.
+                    Votre session a expiré ou vous n&apos;avez pas les autorisations nécessaires pour accéder à cette page.
                 </p>
                 <div className="flex justify-center">
                     <Bouton
