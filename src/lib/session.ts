@@ -98,7 +98,9 @@ export async function getSessionUser() {
 }
 
 export async function logoutUser() {
+
     const cookieStore = await cookies();
     cookieStore.delete('UserId');
     cookieStore.delete('sessionUser')
+
 }

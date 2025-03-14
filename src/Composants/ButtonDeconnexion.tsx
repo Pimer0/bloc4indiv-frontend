@@ -3,9 +3,11 @@
 import Link from 'next/link';
 import { logoutUser } from "@/lib/session";
 import { useSession } from "@/context/SessionProvider";
+import {useRouter} from "next/navigation";
 
 export default function ButtonDeconnexion() {
     const existingSessionUser = useSession();
+    const router = useRouter();
 
     console.log(existingSessionUser);
     
@@ -15,6 +17,7 @@ export default function ButtonDeconnexion() {
         try {
             if (existingSessionUser?.UserId) {
                 await logoutUser();
+                router.push("/");
             }
         } catch (e) {
             console.error(e);

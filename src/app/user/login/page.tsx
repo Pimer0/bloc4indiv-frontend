@@ -9,7 +9,9 @@ import { FormStateLogin, SignupFormSchema } from "@/lib/zodDefinitions";
 import { loginUtilisateur } from "@/services/api/UserAuth";
 import Cookies from "js-cookie";
 
+
 export default function Login() {
+
     const router = useRouter();
     const [formData, setFormData] = useState({
         email: '',
